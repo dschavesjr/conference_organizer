@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @palestra %>
+
+<div>
+  <%= link_to "Edit this palestra", edit_palestra_path(@palestra) %> |
+  <%= link_to "Back to palestras", palestras_path %>
+
+  <%= button_to "Destroy this palestra", @palestra, method: :delete %>
+</div>

@@ -1,0 +1,27 @@
+<%= form_with(model: palestra) do |form| %>
+  <% if palestra.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(palestra.errors.count, "error") %> prohibited this palestra from being saved:</h2>
+
+      <ul>
+        <% palestra.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :tempo, style: "display: block" %>
+    <%= form.number_field :tempo %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

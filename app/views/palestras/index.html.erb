@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Palestras</h1>
+
+<div id="palestras">
+  <% @palestras.each do |palestra| %>
+    <%= render palestra %>
+    <p>
+      <%= link_to "Show this palestra", palestra %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New palestra", new_palestra_path %>
