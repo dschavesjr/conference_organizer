@@ -1,0 +1,9 @@
+<h1>Arquivo Palestras</h1>
+<%= form_with url: palestras_add_palestras_path, multipart: true do |form| %>
+    <input type="file" name="arquivo" accept="application/json">
+    <button>Enviar Arquivo</button>
+<% end %>
+<br>
+<div>
+  <%= link_to "Back to palestras", palestras_path %>
+</div>

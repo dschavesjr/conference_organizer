@@ -8,20 +8,19 @@ class PalestrasController < ApplicationController
 
   # GET /palestras/organize or /palestras/organize.json
   def organize
-    palestras = Palestra.all
-    palestras = palestras.as_json
+    @resultado = Evento.organizado
+  end
 
-    @tracks = manha(palestras)
-    palestras = palestras.map {|palestra| palestra unless @tracks.include? palestra}.compact
+  # GET /palestras/sendfile
+  def sendfile
+  end
 
-    @tracks2 = tarde(palestras)
-    palestras = palestras.map {|palestra| palestra unless @tracks2.include? palestra}.compact
-
-    @tracksb = manha(palestras)
-    palestras = palestras.map {|palestra| palestra unless @tracksb.include? palestra}.compact
-
-    @tracksb2 = tarde(palestras)
-    palestras = palestras.map {|palestra| palestra unless @tracksb2.include? palestra}.compact
+  # POST /palestras/add
+  def add
+    arquivo_param = params.permit(:arquivo)
+    unless arquivo_param[:arquivo].blank?
+      @evento_organizado = request_api('http://localhost:3000/api/v1/palestras', arquivo_param[:arquivo].read)
+    end
   end
 
   # GET /palestras/1 or /palestras/1.json
@@ -86,48 +85,13 @@ class PalestrasController < ApplicationController
       params.require(:palestra).permit(:nome, :tempo)
     end
 
-    def manha(palestras, tempo=0, i=0, result=[])
-      return result if (tempo == 180 || palestras.difference(result).empty?)
-  
-      if tempo > 180
-        tempo -= palestras[i-1]["tempo"]
-        result.delete(palestras[i-1])
-      end
-  
-      while i >= palestras.size
-        i = palestras.index(result.pop) + 1
-        tempo -= palestras[i-1]["tempo"]
-      end
-  
-      tempo += palestras[i]["tempo"]
-      result << palestras[i]
-      manha(palestras, tempo, i+1, result)    
+    def request_api(url, json)
+      res = RestClient.post(url,
+        {
+          arquivo: json,
+          multipart: true
+        })
+      JSON.parse(res.body) if res.code == 200
     end
-  
-    def tarde(palestras, tempo=0, i=0, result=[])
-      if (tempo == 240 || palestras.difference(result).empty?)
-        return result
-      end
-  
-      if tempo > 240
-        tempo -= palestras[i-1]["tempo"]
-        result.delete(palestras[i-1])
-      end
-  
-      while i >= palestras.size
-        i = palestras.index(result.pop) + 1
-        tempo -= palestras[i-1]["tempo"]
-      end
-  
-      tempo += palestras[i]["tempo"]
-      result << palestras[i]
-      tarde(palestras, tempo, i+1, result)    
-    end
-  
-    def sum_time(hours,minutes,minutes_to_sum)
-        minutes += minutes + minutes_to_sum
-        hours += (minutes.to_i / 60).floor
-        minutes = minutes.to_i % 60
-        return [hours, minutes]
-    end
+
 end

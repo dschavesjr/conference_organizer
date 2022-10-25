@@ -1,15 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Palestras</h1>
+<h1>Evento</h1>
 
 <div id="palestras">
-<% @resultado.each do |track, cronograma| %>
+<% @evento_organizado.each do |track, cronograma| %>
 <h4>Track <%= track %></h4>
     <% cronograma.each do |palestra| %>
         <%= palestra["Hora"] %> &nbsp; <%= palestra["Nome"] %> &nbsp; <%= palestra["Tempo"] %></br>
     <% end %>
 <% end %>
-
 </div>
 
 <%= link_to "Back to palestras", palestras_path %>

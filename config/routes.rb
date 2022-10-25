@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
-  resources :palestras
-  get 'organize', to: 'palestras#organize'
   
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :palestras do
+    collection do
+      get :organize
+      get :sendfile
+      post :add, as: :palestras_add
+    end
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :palestras, only: [:create]
+    end
+  end
+
 end
