@@ -24,7 +24,7 @@ Execute: <b>rails s</b>
 No navegador, acesse: http://localhost:3000/palestras
 
 Os arquivos para carga de dados aceitos pela API devem possuir um formato json esperado:
-<code>
+```
   [
     {
       "nome":"Nome da Palestra", 
@@ -35,7 +35,7 @@ Os arquivos para carga de dados aceitos pela API devem possuir um formato json e
       "tempo":45
     }
   ]
-</code>
+```
 
 > Um <b>exemplo de arquivo</b> esperado encontra-se localizado na <b>pasta raiz</b> "palestras.json"
 
