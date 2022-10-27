@@ -4,11 +4,15 @@ module Api
 
             def create
                 unless palestra_params[:arquivo].blank?
-                    @palestras = UploadPalestrasParser.new(palestra_params[:arquivo], 'application/json').palestras
+                    begin
+                        @palestras = UploadPalestrasParser.new(palestra_params[:arquivo], 'application/json').palestras
+                    rescue JSON::ParserError
+                        @palestras = {}
+                    end
 
                     @palestras.each do |palestra|
                         persistir = Palestra.new(nome: palestra['nome'], tempo: palestra['tempo'].to_s == 'lightning' ? 5 : palestra['tempo'].to_i)
-                        persistir.save
+                        persistir.save if (persistir.tempo > 0 && !persistir.nome.nil?)
                     end
                 end
 
