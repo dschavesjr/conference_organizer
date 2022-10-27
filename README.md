@@ -24,16 +24,17 @@ Execute: <b>rails s</b>
 No navegador, acesse: http://localhost:3000/palestras
 
 Os arquivos para carga de dados aceitos pela API devem possuir um formato json esperado:
->[
->  {
->    "nome":"Diminuindo tempo de execução de testes em aplicações Rails enterprise", 
->    "tempo":60
->  },
->  {
->    "boom":"Reinventando a roda em ASP clássico", 
->    "tempo":45
->  }
->]
+> [<br>
+>   {<br>
+>     "nome":"Diminuindo tempo de execução de testes em aplicações Rails enterprise", <br>
+>     "tempo":60<br>
+>   },<br>
+>   {<br>
+>     "boom":"Reinventando a roda em ASP clássico", <br>
+>     "tempo":45<br>
+>   }<br>
+> ]<br>
+
 Um <b>exemplo de arquivo</b> esperado encontra-se localizado na <b>pasta raiz</b> "palestras.json"
 
 <h3>Rodando os testes automatizados</h3>
