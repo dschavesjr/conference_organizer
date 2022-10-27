@@ -1,10 +1,10 @@
-<h1>Editing palestra</h1>
+<h1>Editando palestra</h1>
 
 <%= render "form", palestra: @palestra %>
 
 <br>
 
 <div>
-  <%= link_to "Show this palestra", @palestra %> |
-  <%= link_to "Back to palestras", palestras_path %>
+  <%= link_to "Exibir", @palestra, class: "btn btn-info" %> |
+  <%= link_to "Voltar", palestras_path, class: "btn btn-info" %>
 </div>

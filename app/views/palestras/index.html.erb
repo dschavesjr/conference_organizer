@@ -2,13 +2,28 @@
 
 <h1>Palestras</h1>
 
+<%= link_to "Inserir palestra", new_palestra_path, class: "btn btn-info" %>
+
 <div id="palestras">
-  <% @palestras.each do |palestra| %>
-    <%= render palestra %>
-    <p>
-      <%= link_to "Show this palestra", palestra %>
-    </p>
-  <% end %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Tempo</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @palestras.each do |palestra| %>
+      <tr>
+        <th><%= palestra.id %></th>
+        <th><%= palestra.nome %></th>
+        <th><%= palestra.tempo %></th>
+        <th><%= link_to "Exibir", palestra, class: "btn btn-info" %></th>
+      </tr>
+      <% end %>
+    </tbody>
 </div>
 
-<%= link_to "New palestra", new_palestra_path %>
+

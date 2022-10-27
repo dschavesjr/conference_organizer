@@ -3,12 +3,13 @@
 <h1>Evento</h1>
 
 <div id="palestras">
-<% @evento_organizado.each do |track, cronograma| %>
+<% @resultado.each do |track, cronograma| %>
 <h4>Track <%= track %></h4>
     <% cronograma.each do |palestra| %>
         <%= palestra["Hora"] %> &nbsp; <%= palestra["Nome"] %> &nbsp; <%= palestra["Tempo"] %></br>
     <% end %>
 <% end %>
+
 </div>
 
-<%= link_to "Back to palestras", palestras_path %>
+<%= link_to "Voltar", palestras_path, class: "btn btn-info" %>

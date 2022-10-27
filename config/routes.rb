@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   
   resources :palestras do
     collection do
-      get :organize
-      get :sendfile
-      post :add, as: :palestras_add
+      get :all
+      get :file
+      post :upload, as: :palestras_upload
     end
   end
 

@@ -6,20 +6,22 @@ class PalestrasController < ApplicationController
     @palestras = Palestra.all
   end
 
-  # GET /palestras/organize or /palestras/organize.json
-  def organize
+  # GET /palestras/all or /palestras/all.json
+  def all
     @resultado = Evento.organizado
   end
 
-  # GET /palestras/sendfile
-  def sendfile
+  # GET /palestras/file
+  def file
   end
 
-  # POST /palestras/add
-  def add
+  # POST /palestras/upload
+  def upload
     arquivo_param = params.permit(:arquivo)
     unless arquivo_param[:arquivo].blank?
-      @evento_organizado = request_api('http://localhost:3000/api/v1/palestras', arquivo_param[:arquivo].read)
+      @evento_organizado = ApiPalestrasService.save_palestras_json_file(arquivo_param[:arquivo].read)
+    else
+      @evento_organizado = ApiPalestrasService.save_palestras_json_file('')
     end
   end
 
@@ -83,15 +85,6 @@ class PalestrasController < ApplicationController
     # Only allow a list of trusted parameters through.
     def palestra_params
       params.require(:palestra).permit(:nome, :tempo)
-    end
-
-    def request_api(url, json)
-      res = RestClient.post(url,
-        {
-          arquivo: json,
-          multipart: true
-        })
-      JSON.parse(res.body) if res.code == 200
     end
 
 end

@@ -3,8 +3,8 @@
 <%= render @palestra %>
 
 <div>
-  <%= link_to "Edit this palestra", edit_palestra_path(@palestra) %> |
-  <%= link_to "Back to palestras", palestras_path %>
-
-  <%= button_to "Destroy this palestra", @palestra, method: :delete %>
+  <%= link_to "Editar", edit_palestra_path(@palestra), class: "btn btn-info" %> |
+  <%= link_to "Voltar", palestras_path, class: "btn btn-info" %>
+  <br><br>
+  <%= button_to "DELETAR", @palestra, method: :delete, class: "btn btn-warning" %>
 </div>

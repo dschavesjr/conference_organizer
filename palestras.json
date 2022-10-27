@@ -1,0 +1,78 @@
+[
+  {
+    "nome":"Diminuindo tempo de execução de testes em aplicações Rails enterprise", 
+    "tempo":60
+  },
+  {
+    "nome":"Reinventando a roda em ASP clássico", 
+    "tempo":45
+  },
+  {
+    "nome":"Apresentando Lua para as massas", 
+    "tempo":30
+  },
+  {
+    "nome":"Erros de Ruby oriundos de versões erradas de gems", 
+    "tempo":45
+  },
+  {
+    "nome":"Erros comuns em Ruby", 
+    "tempo":45
+  },
+  {
+    "nome":"Rails para usuários de Django",
+    "tempo":5
+  },
+  {
+    "nome":"Trabalho remoto: prós e cons",
+    "tempo":60
+  },
+  {
+    "nome":"Desenvolvimento orientado a gambiarras", 
+    "tempo":45
+  },
+  {
+    "nome":"Aplicações isomórficas: o futuro (que talvez nunca chegaremos)", 
+    "tempo":30
+  },
+  {
+    "nome":"Codifique menos, Escreva mais!", 
+    "tempo":30
+  }, 
+  {
+    "nome":"Programação em par", 
+    "tempo":45
+  },
+  {
+    "nome":"A mágica do Rails: como ser mais produtivo", 
+    "tempo":60
+  },
+  {
+    "nome":"Ruby on Rails: Por que devemos deixá-lo para trás", 
+    "tempo":60
+  },
+  {
+    "nome":"Clojure engoliu Scala: migrando ha aplicação", 
+    "tempo":45
+  },
+  {
+    "nome":"Ensinando programação nas grotas de Maceió", 
+    "tempo":30
+  },
+  {
+    "nome":"Ruby vs. Clojure para desenvolvimento backend", 
+    "tempo":30
+  },
+  {
+    "nome":"Manutenção de aplicações legadas em Ruby on Rails", 
+    "tempo":60
+  },
+  {
+    "nome":"Um mundo sem StackOverflow", 
+    "tempo":30
+  },
+  {
+    "nome":"Otimizando CSS em aplicações Rails", 
+    "tempo":30
+  }
+]

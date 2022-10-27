@@ -4,11 +4,11 @@ class Evento
             grade = Palestra.all
             grade = grade.as_json(only: [:nome, :tempo])
 
-            grade_manha, grade_tarde = [], []
             resultado = {}
             i = 0;
             char_code = 65 # A
             while grade.size > 0
+                grade_manha, grade_tarde = [], []
                 grade_manha = group_by_intervalo(grade, 180)
                 grade = grade.map {|palestra| palestra unless grade_manha.include? palestra}.compact
                 if grade.size > 0
@@ -50,22 +50,22 @@ class Evento
         private
 
         def group_by_intervalo(palestras, intervalo, tempo=0, i=0, result=[], max_result=[], max_tempo=0)
-            return result if (tempo == intervalo || palestras.difference(result).empty?)
+            return result if (tempo == intervalo || (palestras.difference(result).empty? && (tempo < intervalo)))
         
             if tempo > intervalo
-            tempo -= palestras[i-1]["tempo"]
-            result.delete(palestras[i-1])
+                tempo -= palestras[i-1]["tempo"]
+                result.delete(palestras[i-1])
             end
     
             if tempo < intervalo && tempo > max_tempo
-            max_result = result.clone
-            max_tempo = tempo
+                max_result = result.clone
+                max_tempo = tempo
             end
         
             while i >= palestras.size
-            return max_result if result.size == 1 && (palestras.index(result[1]) == palestras.size - 1)
-            i = palestras.index(result.pop) + 1
-            tempo -= palestras[i-1]["tempo"]
+                return max_result if result.size == 1 && (palestras.index(result[1]) == palestras.size - 1)
+                i = palestras.index(result.pop) + 1
+                tempo -= palestras[i-1]["tempo"]
             end
         
             tempo += palestras[i]["tempo"]
