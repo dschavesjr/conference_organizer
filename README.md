@@ -47,7 +47,7 @@ Execute: <b>rspec spec/path</b> (alterando "path" para o caminho completo do arq
 <h3>Considerações Finais e Possíveis Melhorias Futuras</h3>
 
 Toda atividade foi mais focada na construção do algoritmo de organização.
-Em uma melhoria futura, consideraria implementar na API dois endpoints, um para receber (POST) o arquivo e realizar a gravação das palestras e outro (GET) para responder com o evento organizado. Desta forma, a API ao lidar com diferentes situações no recebimento de arquivo poderia entregar diferentes respostas (arquivo inválido, quantidade de registros gravados, se a gravação foi completa ou parcial, etc). Todavia como a task pedia explicitamente que a resposta do endpoint já fosse o evento organizado, essa foi a maneira tratada na aplicação. 
+Em uma melhoria futura, consideraria implementar na API dois endpoints, um para receber (POST) o arquivo e realizar a gravação das palestras e outro (GET) para responder com o evento organizado. Desta forma, a API ao lidar com diferentes situações no recebimento de arquivo poderia entregar diferentes respostas (arquivo inválido, quantidade de registros gravados, se a gravação foi completa ou parcial, etc).
 
 Uma outra melhoria futura é nos testes automatizados, que só foi implementado o "caminho feliz" dos dois principais pontos de atenção da app: API e algoritimo de organização.
 
